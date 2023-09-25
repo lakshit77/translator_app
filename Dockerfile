@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
 
 # Expose the port the app runs on
-EXPOSE 8000
+EXPOSE 80
 
 # Start the Django application using gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "translator_project.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "translator_project.wsgi:application"]

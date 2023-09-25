@@ -1,6 +1,6 @@
 variables:
   IMAGE_NAME: techsunami/translator_app
-  IMAGE_TAG: python-app-1.1
+  IMAGE_TAG: python-app-1.2
 
 stages:
   - test
