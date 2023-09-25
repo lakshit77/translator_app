@@ -10,8 +10,9 @@ stages:
 run_tests:
   stage: test
   image: python:3.10.13-slim
-  # before_script:
-  #   - apt-get update && apt-get install make
+  before_script:
+    # - apt-get update && apt-get install make
+    - pip install -r requirements.txt
   script:
     - python manage.py test
 
