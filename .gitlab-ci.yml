@@ -49,7 +49,9 @@ deploy:
   script:
     - echo $IMAGE_NAME
     - echo $IMAGE_TAG
-    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@3.108.250.241 "bash run.sh"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@3.108.250.241 "
+      sudo docker login -u $REGISTRY_NAME -p $REGISTRY_PASS &&
+      bash run.sh"
     # - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@3.108.250.241 "
     #     sudo docker login -u $REGISTRY_NAME -p $REGISTRY_PASS &&
     #     sudo docker ps -aq | sudo xargs docker stop | sudo xargs docker rm &&

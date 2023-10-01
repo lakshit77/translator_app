@@ -1,4 +1,4 @@
-sudo docker login -u $REGISTRY_NAME -p $REGISTRY_PASS
+# sudo docker login -u $REGISTRY_NAME -p $REGISTRY_PASS
 
 if [ sudo docker ps -aq ]
 then 
