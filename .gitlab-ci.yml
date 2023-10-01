@@ -20,7 +20,7 @@ stages:
     - python manage.py test
 
 
-build_image:
+.build_image:
   stage: build
   image: docker:20.10.16
   services:
@@ -49,8 +49,9 @@ deploy:
   script:
     - echo $IMAGE_NAME
     - echo $IMAGE_TAG
-    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@3.108.250.241 "
-        sudo docker login -u $REGISTRY_NAME -p $REGISTRY_PASS &&
-        sudo docker ps -aq | sudo xargs docker stop | sudo xargs docker rm &&
-        sudo docker run -d -p 8000:8000 $IMAGE_NAME:$IMAGE_TAG"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@3.108.250.241 "bash run.sh"
+    # - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@3.108.250.241 "
+    #     sudo docker login -u $REGISTRY_NAME -p $REGISTRY_PASS &&
+    #     sudo docker ps -aq | sudo xargs docker stop | sudo xargs docker rm &&
+    #     sudo docker run -d -p 8000:8000 $IMAGE_NAME:$IMAGE_TAG"
 
