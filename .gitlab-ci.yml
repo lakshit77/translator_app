@@ -20,7 +20,7 @@ stages:
     - python manage.py test
 
 
-.build_image:
+build_image:
   stage: build
   image: docker:20.10.16
   services:
