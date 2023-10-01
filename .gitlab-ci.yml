@@ -33,12 +33,9 @@ build_image:
     - echo $CI_REGISTRY_USER
     - echo $CI_REGISTRY
     - echo $CI_REGISTRY_IMAGE
-    - echo $CI_DEPLOY_PASSWORD | docker login -u $CI_DEPLOY_USER $CI_REGISTRY --password-stdin
-    # - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    # - echo $CI_DEPLOY_PASSWORD | docker login -u $CI_DEPLOY_USER $CI_REGISTRY --password-stdin
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
   script:
     - docker build -t $IMAGE_NAME -t $IMAGE_NAME:$IMAGE_TAG .
     - docker image ls
     - docker push --all-tags $IMAGE_NAME
-
-
-# UAB11PgxcYR41S136V3z
