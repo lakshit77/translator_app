@@ -48,7 +48,7 @@ deploy:
     - chmod 400 $SSH_KEY
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@3.108.250.241 "
-        docker login -u $REGISTRY_NAME -p $REGISTRY_PASS &&
+        sudo su && docker login -u $REGISTRY_NAME -p $REGISTRY_PASS &&
         docker ps -aq | xargs docker stop | xargs docker rm &&
         docker run -d -p 80:80 $IMAGE_NAME:$IMAGE_TAG"
 
