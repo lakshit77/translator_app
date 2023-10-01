@@ -1,7 +1,7 @@
 variables:
   APP_VERSION: $CI_PIPELINE_IID
   # IMAGE_NAME: techsunami/translator_app
-  IMAGE_NAME: $CI_REGISTRY_NAME
+  IMAGE_NAME: $CI_REGISTRY_IMAGE
   IMAGE_TAG: $CI_PIPELINE_IID
   # IMAGE_TAG: python-app-1.2
 
@@ -32,9 +32,9 @@ build_image:
     - echo $CI_REGISTRY_PASSWORD
     - echo $CI_REGISTRY_USER
     - echo $CI_REGISTRY
-    - echo $CI_REGISTRY_NAME
+    - echo $CI_REGISTRY_IMAGE
     - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
   script:
-    - docker build -t $IMAGE_NAME -t $IMAGE_NAME/$IMAGE_TAG .
+    - docker build -t $IMAGE_NAME -t $IMAGE_NAME:$IMAGE_TAG .
     - docker image ls
     - docker push --all-tags $IMAGE_NAME
